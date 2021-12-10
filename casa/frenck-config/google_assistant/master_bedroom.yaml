@@ -1,0 +1,8 @@
+---
+#
+# List of entities that is exposed to Google Assistant
+# From area: Master Bedroom
+#
+[]
+# - climate.master_bedroom
+# - light.master_bedroom_ceiling

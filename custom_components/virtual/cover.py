@@ -1,17 +1,12 @@
-"""Implementation of entity: virtual sensor."""
+"""Implementation of entity: virtual cover."""
 from __future__ import annotations
 
 import logging
 
 import voluptuous as vol
 
-from homeassistant.components.sensor import (
-    CONF_STATE_CLASS,
-    DEVICE_CLASSES_SCHEMA,
-    STATE_CLASSES_SCHEMA,
-    SensorEntity,
-)
-from homeassistant.const import CONF_DEVICE_CLASS
+from homeassistant.components.cover import DEVICE_CLASSES_SCHEMA, CoverEntity
+from homeassistant.const import CONF_DEVICE_CLASS, STATE_ON
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
@@ -20,11 +15,9 @@ from .base_entity import BASE_SCHEMA, BaseEntity
 
 _LOGGER = logging.getLogger(__name__)
 
-
 PLATFORM_SCHEMA = BASE_SCHEMA.extend(
     {
         vol.Optional(CONF_DEVICE_CLASS): DEVICE_CLASSES_SCHEMA,
-        vol.Optional(CONF_STATE_CLASS): STATE_CLASSES_SCHEMA,
     }
 )
 
@@ -35,15 +28,19 @@ async def async_setup_platform(
     async_add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None,
 ):
-    """Virtual sensor setup."""
-    async_add_entities([VirtualSensor(hass, config)], True)
+    """Virtual cover setup."""
+    async_add_entities([VirtualCover(hass, config)], True)
 
 
-class VirtualSensor(BaseEntity, SensorEntity):
-    """An implementation of a Virtual Sensor."""
+class VirtualCover(BaseEntity, CoverEntity):
+    """An implementation of a Virtual Cover."""
 
-    _entity_type: str = "sensor"
+    _entity_type: str = "cover"
+
+    def __init__(self, hass: HomeAssistant, entry: ConfigType) -> None:
+        """Initialize the cover entity."""
+        self._attr_is_closed: bool = False
 
     def set_value(self, value: str):
-        """Set of sensor value."""
-        self._attr_native_value = value
+        """Set of cover value."""
+        self._attr_is_closed = value == STATE_ON

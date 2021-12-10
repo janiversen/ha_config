@@ -6,4 +6,4 @@ home-assistant*
 .storage
 .HA_VERSION
 secrets.yaml
-
+setup

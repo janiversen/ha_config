@@ -1,0 +1,5 @@
+platform: ping
+host: piso.lan
+name: piso
+count: 8
+scan_interval: 60

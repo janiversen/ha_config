@@ -10,4 +10,4 @@ homeassistant:
         - 192.168.20.0/24
 #      allow_bypass_login: true
     - type: homeassistant
-  packages: !include_dir_named casa/integrations
+  packages: !include_dir_named setup/integrations

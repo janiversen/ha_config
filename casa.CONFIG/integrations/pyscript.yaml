@@ -6,26 +6,3 @@ pyscript:
   hass_is_global: true  
   apps:
     solar:
-      calc_consumption:
-        entity_id: "sensor.casa_consumo"
-      power_meter:
-        entity_id: "sensor.power_meter"
-        scan_interval: 10
-      production:
-        entity_id: "sensor.production"
-      calentador:
-        entity_id: "switch.calentador"
-        start_time: "13:00"
-        stop_time: "18:00"
-        condition:
-          - 'device_tracker.belen_iphone == "home"'
-          - 'device_tracker.jan_iphone == "home"'
-      consumers:
-        - entity_id: "switch.onvis_s3eu_519a30"
-          load: 2200
-        - entity_id: "switch.onvis_s3eu_51c26c"
-          load: 1000
-      optimizer:
-        entity_id: "switch.optimizer"
-        cut_off_load: 100
-        minimum_switch_time: 60

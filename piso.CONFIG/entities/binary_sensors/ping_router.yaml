@@ -1,5 +1,5 @@
 platform: ping
-host: piso_router.lan
-name: piso_router
+host: casa_router.lan
+name: casa_router
 count: 8
 scan_interval: 60

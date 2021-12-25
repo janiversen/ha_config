@@ -1,5 +1,5 @@
 platform: ping
-host: piso.lan
-name: piso
+host: casa.lan
+name: casa
 count: 8
 scan_interval: 60

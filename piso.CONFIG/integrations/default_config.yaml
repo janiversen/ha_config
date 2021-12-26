@@ -22,9 +22,12 @@ sun:
 
 system_health:
 
+ios:
+
+mobile_app:
+
 #history:
 #logbook:
-#mobile_app:
 #ssdp:
 #updater:
 #zeroconf:

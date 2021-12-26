@@ -1,0 +1,9 @@
+#
+# Outdoor camera
+#
+stream:
+camera:
+  - platform: generic
+    name: Casa porche
+    still_image_url: http://ipcam.lan/jpg/image.jpg
+    stream_source: rtsp://ipcam.lan:554
